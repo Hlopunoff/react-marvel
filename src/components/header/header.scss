@@ -1,0 +1,58 @@
+@import '../../styles/vars';
+.header {
+    padding: 50px 0;
+    &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 33px;
+        color: #000;
+        cursor: pointer;
+        &_red {
+            color: $red;
+        }
+    }
+    &__nav {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        color: #000;
+    }
+    &__link {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        color: #000;
+        text-decoration: none;
+        &_active {
+            color: $red;
+        }
+    }
+}
+
+@media (max-width: 567px) {
+    .header {
+        padding: 25px 0;
+        &__title {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        &__nav {
+            column-gap: 5px;
+        }
+        &__link {
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+}
