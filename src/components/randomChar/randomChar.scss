@@ -19,6 +19,7 @@
     }
     &__img {
         display: block;
+        width: 100%;
         height: 100%;
         object-fit: cover;
     }
@@ -46,6 +47,7 @@
     }
     &__btn {
         position: relative;
+        padding-top: 11px;
         width: 101px;
         height: 38px;
         text-align: center;
@@ -56,6 +58,7 @@
         line-height: 16px;
         color: #fff;
         border: none;
+        text-decoration: none;
         cursor: pointer;
         &::after {
             position: absolute;
