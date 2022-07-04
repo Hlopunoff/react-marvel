@@ -1,3 +1,4 @@
+import CharInfo from '../charInfo/CharInfo';
 import CharList from '../charList/CharList';
 import DefaultInfo from '../defaultInfo/DefaultInfo';
 import Header from '../header/Header';
@@ -15,7 +16,8 @@ function App() {
           <div className="container">
             <div className="cards__wrap">
               <CharList/>
-              <DefaultInfo/>
+              {/* <DefaultInfo/> */}
+              <CharInfo/>
             </div>
           </div>
         </section>

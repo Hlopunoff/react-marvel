@@ -1,6 +1,8 @@
 import React from 'react';
+import Char from '../char/Char';
 import './charList.scss';
 
+import bg from '../../assets/img/bg_asset.png';
 import img from '../../assets/img/loki.png';
 
 const CharList = () => {
@@ -8,62 +10,19 @@ const CharList = () => {
         <>
             <div className="cards__content">
                 <div className="cards__list">
-                    <div className="card">
-                    <div className="card__img-wrap">
-                        <img src={img} alt="loki" className="card__img" />
-                    </div>
-                    <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
-                    <div className="card">
-                        <div className="card__img-wrap">
-                            <img src={img} alt="loki" className="card__img" />
-                        </div>
-                        <h2 className="card__title">loki</h2>
-                    </div>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
+                    <Char title="loki" img={img}/>
                 </div>
                 <button className="cards__btn">load more</button>
+                <img src={bg} alt="character bg" className="char-bg" />
             </div>
         </>
     );
