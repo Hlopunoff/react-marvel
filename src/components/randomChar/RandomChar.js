@@ -69,10 +69,12 @@ const RandomChar = () => {
 function View(props) {
     const {name, thumbnail, description, wiki, homepage} = props.char;
 
+    const imgStyle = thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ? {'objectFit': 'contain',} : {'objectFit': 'cover',};
+
     return (
         <div className="randChar__card">
             <div className="randChar__img-wrap">
-                <img className='randChar__img' src={thumbnail} alt={name} />
+                <img className='randChar__img' src={thumbnail} alt={name} style={imgStyle}/>
             </div>
             <div className="randChar__descr">
                 <h2 className="randChar__title">{name}</h2>

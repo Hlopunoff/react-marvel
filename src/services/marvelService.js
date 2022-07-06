@@ -15,6 +15,17 @@ class MarvelService {
         }
     }
 
+    async getCharacters() {
+        try {
+            const res = await fetch(`https://gateway.marvel.com:443/v1/public/characters?&limit=9offset=210&apikey=${this._API_KEY}`);
+            const data = await res.json();
+
+            return this._transformCharacters(data.data.results);
+        } catch (error) {
+            throw new Error(`Could not fetch: ${error.message}`);
+        }
+    }
+
     _transformCharacter(data) {
         return {
             description: data.description === '' ? 'There is no any description for this character' : data.description.length > 100 ? `${data.description.slice(0, 150)}...` : data.description,
@@ -23,6 +34,16 @@ class MarvelService {
             wiki: data.urls[1].url,
             thumbnail: `${data.thumbnail.path}.${data.thumbnail.extension}`,
         };
+    }
+
+    _transformCharacters(data) {
+        return data.map(char => {
+            return {
+                id: char.id,
+                name: char.name,
+                thumbnail: `${char.thumbnail.path}.${char.thumbnail.extension}`,
+            };
+        });
     }
 }
 
