@@ -14,8 +14,8 @@ const CharList = (props) => {
     const [loading, setLoading] = useState(true);
     const [offset, setOffset] = useState(210);
     const [newCharsLoading, setNewCharsLoading] = useState(false);
+    const [charEnded, setCharEnded] = useState(false);
 
-    const [selectedChar, setSelectedChar] = useState('');
     const listRef = useRef();
 
     useEffect(() => {
@@ -40,15 +40,20 @@ const CharList = (props) => {
     }
 
     function onCharsLoaded(chars) {
+        let ended = false;
+        if (chars.length < 9) {
+            ended = true;
+        }
+
+        setChars(prevChars => [...prevChars, ...chars]);
         setLoading(false);
         setNewCharsLoading(false);
-        setChars(prevChars => [...prevChars, ...chars]);
         setOffset(prevOffset => prevOffset + 9);
+        setCharEnded(ended);
     }
 
     const cardListHandler = (e) => {
-        setSelectedChar(+e.currentTarget.getAttribute('id'));
-        props.setSelected(selectedChar);
+        props.setSelected(+e.currentTarget.getAttribute('id'));
     } 
 
     const spinner = loading ? <Spinner/> : null;
@@ -67,7 +72,7 @@ const CharList = (props) => {
                     {err}
                     {elems}
                 </div>
-                <button className="cards__btn" onClick={onUpdateChars}>load more</button>
+                <button className="cards__btn" onClick={() => onUpdateChars(offset)}>load more</button>
                 <img src={bg} alt="character bg" className="char-bg" />
             </div>
         </>

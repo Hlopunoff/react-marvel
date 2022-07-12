@@ -2,17 +2,14 @@ import React from 'react';
 import SingleComic from '../singeComic/SingleComic';
 
 const ComicsList = (props) => {
-    // const comicsList = props.comics.map((comic, i) => {
-    //     return <SingleComic title={comic.name} key={i}/>
-    // })
+    const comicList = props.comics?.map((item, i) => {
+        return <SingleComic title={item?.name} key={i}/>
+    }).slice(0, 10);
     return (
         <div className='card-info__comics'>
             <span className='card-info__body-title'>Comics:</span>
             <div className="card-info__comic-content">
-                {/* {
-                    comicsList.length > 0 ? null : 'There is no comics with this character'
-                } */}
-               {/* {comicsList} */}
+                {comicList ? comicList : 'There is no any comic for this character'}
             </div>
         </div>
     );
