@@ -1,6 +1,7 @@
 class MarvelService {
     constructor() {
         this._API_KEY = '2c8a14a356572e1c302e1a3d414636c4';
+        this._BASE_OFFSET = 210;
     }
 
     async getCharacter(id) {
@@ -15,9 +16,9 @@ class MarvelService {
         }
     }
 
-    async getCharacters() {
+    async getCharacters(offset = this._BASE_OFFSET) {
         try {
-            const res = await fetch(`https://gateway.marvel.com:443/v1/public/characters?&limit=9offset=210&apikey=${this._API_KEY}`);
+            const res = await fetch(`https://gateway.marvel.com:443/v1/public/characters?&limit=9offset=${offset}&apikey=${this._API_KEY}`);
             const data = await res.json();
 
             return this._transformCharacters(data.data.results);
@@ -33,6 +34,7 @@ class MarvelService {
             homepage: data.urls[0].url,
             wiki: data.urls[1].url,
             thumbnail: `${data.thumbnail.path}.${data.thumbnail.extension}`,
+            comics: data.comics.items,
         };
     }
 

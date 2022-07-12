@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Char from '../char/Char';
 import MarvelService from '../../services/marvelService';
 import Spinner from '../spinner/Spinner';
@@ -7,26 +7,31 @@ import './charList.scss';
 
 import bg from '../../assets/img/bg_asset.png';
 
-const CharList = () => {
+const CharList = (props) => {
     const service = new MarvelService();
     const [chars, setChars] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [offset, setOffset] = useState(210);
+    const [newCharsLoading, setNewCharsLoading] = useState(false);
+
+    const [selectedChar, setSelectedChar] = useState('');
+    const listRef = useRef();
 
     useEffect(() => {
         onUpdateChars();
     }, []);
 
-    function onUpdateChars() {
+    function onUpdateChars(offset) {
         onCharsLoading();
 
-        service.getCharacters()
-        .then(onCharsLoaded)
-        .catch(onCharsError);
+        service.getCharacters(offset)
+            .then(onCharsLoaded)
+            .catch(onCharsError);
     }
 
     function onCharsLoading() {
-        setLoading(true);
+        setNewCharsLoading(true);
     }
 
     function onCharsError() {
@@ -36,22 +41,33 @@ const CharList = () => {
 
     function onCharsLoaded(chars) {
         setLoading(false);
+        setNewCharsLoading(false);
         setChars(prevChars => [...prevChars, ...chars]);
+        setOffset(prevOffset => prevOffset + 9);
     }
+
+    const cardListHandler = (e) => {
+        setSelectedChar(+e.currentTarget.getAttribute('id'));
+        props.setSelected(selectedChar);
+    } 
 
     const spinner = loading ? <Spinner/> : null;
     const err = error ? <Error/> : null;
-    const elems = !(loading || error || !chars) ? chars.map(char => <Char key={char.id} id={char.id} title={char.name} img={char.thumbnail}/>) : null;
+    const elems = !(loading || error || !chars) ? chars.map(char => {
+        const imgStyle = char.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ? {'objectFit': 'contain',} : {'objectFit': 'cover',};
+        
+        return <Char key={char.id} id={char.id} title={char.name} img={char.thumbnail} imgStyle={imgStyle} handler={cardListHandler}/>
+    }) : null;
 
     return (
         <>
             <div className="cards__content">
-                <div className="cards__list">
+                <div className="cards__list" ref={listRef}>
                     {spinner}
                     {err}
                     {elems}
                 </div>
-                <button className="cards__btn">load more</button>
+                <button className="cards__btn" onClick={onUpdateChars}>load more</button>
                 <img src={bg} alt="character bg" className="char-bg" />
             </div>
         </>

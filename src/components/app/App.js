@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import CharInfo from '../charInfo/CharInfo';
 import CharList from '../charList/CharList';
 import DefaultInfo from '../defaultInfo/DefaultInfo';
@@ -6,6 +7,10 @@ import RandomChar from '../randomChar/RandomChar';
 import './app.scss';
 
 function App() {
+  const [selected, setSelected] = useState('');
+
+  const setSelectedChar = (id) => setSelected(id);
+
   return (
     <>
       <Header/>
@@ -15,9 +20,8 @@ function App() {
         <section className="cards">
           <div className="container">
             <div className="cards__wrap">
-              <CharList/>
-              {/* <DefaultInfo/> */}
-              <CharInfo/>
+              <CharList setSelected={setSelectedChar}/>
+              {selected ? <CharInfo selected={selected}/> : <DefaultInfo/>}
             </div>
           </div>
         </section>
