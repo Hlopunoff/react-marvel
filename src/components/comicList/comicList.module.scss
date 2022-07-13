@@ -1,0 +1,49 @@
+@import '../../styles/vars';
+.comicList {
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 225px));
+    grid-template-rows: repeat(2, minmax(200px, 415px));
+    grid-auto-rows: minmax(200px, 415px);
+    grid-auto-columns: repeat(4, minmax(100px, 225px));
+    column-gap: 67px;
+    row-gap: 73px;
+}
+
+.btn {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    margin-top: 45px;
+    width: 170px;
+    height: 38px;
+    background-color: $red;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 35px;
+        height: 10px;
+        background-color: #fff;
+        transform: rotate(-45deg);
+        bottom: 0;
+        right: -15px;
+    }
+    &::before {
+        position: absolute;
+        content: '';
+        width: 35px;
+        height: 10px;
+        background-color: #fff;
+        transform: rotate(-45deg);
+        top: 0;
+        left: -15px;
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './header.scss';
 
 const Header = () => {
@@ -6,11 +7,11 @@ const Header = () => {
         <header className="header">
             <div className="container">
                 <div className="header__wrap">
-                    <h1 className="header__title"><span className='header__title_red'>Marvel</span> informational portal</h1>
+                    <Link to='/' className="header__title"><span className='header__title_red'>Marvel</span> informational portal</Link>
                     <nav className="header__nav">
-                        <a className='header__link header__link_active' href="#">Characters</a>
+                        <NavLink className='header__link' to='/' style={({isActive}) => isActive ? {color: '#9F0013'} : {color: '#000'}}>Characters</NavLink>
                         /
-                        <a href="#" className="header__link">Comics</a>
+                        <NavLink to='/comics' className="header__link" style={({isActive}) => isActive ? {color: '#9F0013'} : {color: '#000'}}>Comics</NavLink>
                     </nav>
                 </div>
             </div>
