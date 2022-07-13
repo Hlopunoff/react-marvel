@@ -1,0 +1,80 @@
+@import '../../styles/vars';
+.comicSection {
+    margin-top: 50px;
+}
+
+.comic {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap {
+    display: flex;
+    column-gap: 50px;
+}
+
+.img-wrap {
+    width: 293px;
+    height: 450px;
+}
+
+.img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: #000;
+}
+
+.descr {
+    max-width: 550px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+}
+
+.amount-of-pages {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+}
+
+.lang {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+}
+
+.price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: $red;
+}
+
+.btn {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    text-decoration: none;
+}

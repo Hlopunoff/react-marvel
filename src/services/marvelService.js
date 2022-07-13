@@ -38,6 +38,17 @@ class MarvelService {
         }
     }
 
+    async getComicById(id) {
+        try {
+            const res = await fetch(`https://gateway.marvel.com:443/v1/public/comics/${id}?apikey=${this._API_KEY}`);
+            const data = await res.json();
+
+            return this._transformComic(data.data.results[0]);
+        } catch (error) {
+            throw new Error(`Could not fetch single comic: ${error.message}`);
+        }
+    }
+
     _transformCharacter(data) {
         return {
             description: data.description === '' ? 'There is no any description for this character' : data.description.length > 100 ? `${data.description.slice(0, 150)}...` : data.description,
@@ -68,6 +79,17 @@ class MarvelService {
                 thumbnail: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
             };
         });
+    }
+
+    _transformComic(data) {
+        return {
+            id: data.id,
+            title: data.title,
+            description: data.description ? data.description : 'There is no any description for this specific comic',
+            pages: data.pageCount,
+            price: data.prices[0].price > 0 ? `${data.prices[0].price}$` : 'not available',
+            thumbnail: `${data.thumbnail.path}.${data.thumbnail.extension}`,
+        };
     }
 }
 
