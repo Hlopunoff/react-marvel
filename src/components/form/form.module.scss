@@ -1,0 +1,140 @@
+@import '../../styles/vars';
+.form {
+    margin-top: 30px;
+    padding: 25px;
+    width: 100%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    min-height: 127px;
+    background-color: #fff;
+}
+
+.label {
+    display: block;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+}
+
+.wrap {
+    display: flex;
+    margin-top: 15px;
+    flex-direction: column;
+    row-gap: 22px;
+}
+
+.default {
+    display: flex;
+    justify-content: space-between;
+}
+
+.res {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    padding: 10px;
+    width: 250px;
+    height: 38px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+
+.submit {
+    position: relative;
+    width: 101px;
+    height: 38px;
+    background-color: $red;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 10px;
+        background-color: #fff;
+        top: 0;
+        left: -10px;
+        transform: rotate(-45deg);
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 10px;
+        background-color: #fff;
+        bottom: 0;
+        right: -10px;
+        transform: rotate(-45deg);
+    }
+}
+
+.success {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: #03710E;
+}
+
+.btn-success {
+    position: relative;
+    padding: 11px 0 11px 0;
+    width: 101px;
+    height: 38px;
+    background-color: $grey;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    &::before {
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 10px;
+        background-color: #fff;
+        top: 0;
+        left: -10px;
+        transform: rotate(-45deg);
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 10px;
+        background-color: #fff;
+        bottom: 0;
+        right: -10px;
+        transform: rotate(-45deg);
+    }
+}
+
+.error {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: $red;
+}

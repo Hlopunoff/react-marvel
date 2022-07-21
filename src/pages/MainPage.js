@@ -3,6 +3,7 @@ import RandomChar from '../components/randomChar/RandomChar';
 import CharList from '../components/charList/CharList';
 import CharInfo from '../components/charInfo/CharInfo';
 import DefaultInfo from '../components/defaultInfo/DefaultInfo';
+import Form from '../components/form/Form';
 
 const MainPage = () => {
     const [selected, setSelected] = useState('');
@@ -16,7 +17,10 @@ const MainPage = () => {
           <div className="container">
             <div className="cards__wrap">
               <CharList setSelected={setSelectedChar}/>
-              {selected ? <CharInfo selected={selected}/> : <DefaultInfo/>}
+              <aside>
+                {selected ? <CharInfo selected={selected}/> : <DefaultInfo/>}
+                <Form/>
+              </aside>
             </div>
           </div>
         </section>

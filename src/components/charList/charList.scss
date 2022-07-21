@@ -3,7 +3,8 @@
     position: relative;
     padding-bottom: 45px;
     &__wrap {
-        display: flex;
+        display: grid;
+        grid-template-columns: 650px 425px;
         column-gap: 25px;
     }
     &__content {
@@ -60,7 +61,7 @@
     position: absolute;
     right: 200px;
     bottom: 0;
-    z-index: -1;
+    z-index: -10;
 }
 
 @media (max-width: 1200px) {
