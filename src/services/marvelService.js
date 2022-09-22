@@ -49,6 +49,17 @@ class MarvelService {
         }
     }
 
+    async getCharByName(name) {
+        try {
+            const res = await fetch(`http://gateway.marvel.com/v1/public/characters?name=${name}&apikey=${this._API_KEY}`);
+            const data = await res.json();
+            
+            return this._transformCharacter(data.data.results[0]);
+        } catch (error) {
+            throw new Error(`Could not fetch by name: ${error.message}`);
+        }
+    }
+
     _transformCharacter(data) {
         return {
             description: data.description === '' ? 'There is no any description for this character' : data.description.length > 100 ? `${data.description.slice(0, 150)}...` : data.description,
